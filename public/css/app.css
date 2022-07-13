@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 30px;
+  width: auto;
+  height: auto;
+}
+.container .title {
+  font-size: 40px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 100;
+}
+.container .justify-center-flex {
+  display: flex;
+  justify-content: center;
+  width: auto;
+  margin-top: 40px;
+}
+.container .justify-center-flex .flex-container-circles {
+  width: 800px;
+  display: flex;
+  justify-content: space-between;
+}
+.container .justify-center-flex .flex-container-circles .circle-description {
+  height: auto;
+  position: relative;
+}
+.container .justify-center-flex .flex-container-circles .circle-description .circle {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .justify-center-flex .flex-container-circles .circle-description .circle .number {
+  font-weight: 100;
+}
+.container .justify-center-flex .flex-container-circles .circle-description .description {
+  margin-top: 5px;
+  text-align: center;
+  font-weight: 100;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+.container .justify-center-flex .flex-container-circles .line {
+  height: 5px;
+  width: 110px;
+  background-color: #d9d9d9;
+  margin-top: 22.5px;
+}
+.container .content {
+  padding: 30px 100px 30px 100px;
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  margin-top: 70px;
+  border-radius: 10px;
+}
+.container .content .title-content {
+  font-size: 40px;
+  font-weight: 100;
+  margin: 10px;
+}
+.container .content .line-content {
+  height: 5px;
+  width: 300px;
+  background-color: #76A972;
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+.container .content .terms-of-service {
+  height: 150px;
+  width: 100%;
+  margin: 0px 0px 0px 10px;
+  overflow: scroll;
+}
+.container .content .box {
+  margin: 10px;
+}
+.container .content .box .input {
+  width: 300px;
+  padding: 5px;
+  border-width: 1px;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: lighter;
+}
+.container .content .box .input-image {
+  color: white;
+  display: inline-block;
+  background-color: #76A972;
+  border: none;
+  padding: 5px;
+  font-weight: 700;
+  border-radius: 3px;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 10pt;
+}
+.container .content .box-checkbox {
+  display: flex;
+  margin: 10px;
+}
+.container .content .box-checkbox .input-checkbox {
+  margin: 0px 0px 0px 10px;
+  height: 18.5px;
+  width: 18.5px;
+}
+.container .content .error {
+  color: red;
+  margin-left: 10px;
+}
+.container .content .button {
+  margin: 10px;
+  border-radius: 2px;
+  border-width: 0;
+  padding: 20px;
+  background-color: #F05508;
+  text-transform: uppercase;
+  font-weight: 100;
+  color: white;
+}
+.container .content .button:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
