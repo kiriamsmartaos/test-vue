@@ -46,11 +46,11 @@
                 <div class="box">
                     <input class="input" v-model="formData.nom" type="text" placeholder="Nom" required>
                 </div>
-                <span class="error" v-show="validation?.errors.first('nom')">Introdueix el teu nom</span>
+                <span class="error" v-show="validation?.error('nom')">Introdueix el teu nom</span>
                 <div class="box">
                     <input class="input" v-model="formData.cognoms" type="text" placeholder="Cognom" required>
                 </div>
-                <span class="error" v-show="validation?.errors.first('cognoms')">
+                <span class="error" v-show="validation?.error('cognoms')">
                     Introdueix els teus cognoms
                     <br>
                 </span>
@@ -64,7 +64,7 @@
                 <div class="box">
                     <input class="input" v-model="formData.data_naixement" type="date" placeholder="Data Naixament" required>
                 </div>
-                <span class="error" v-show="validation?.errors.first('data_naixement')">
+                <span class="error" v-show="validation?.error('data_naixement')">
                     Introdueix la data de naixement
                     <br>
                 </span>
@@ -78,14 +78,14 @@
                 <div class="box">
                     <input class="input" v-model="formData.email" type="text" placeholder="Email" required>
                 </div>
-                <span class="error" v-show="validation?.errors.first('email')">
+                <span class="error" v-show="validation?.error('email')">
                     Introdueix el teu email
                     <br>
                 </span>
                 <div class="box">
                     <input class="input" v-model="formData.telefon" type="text" placeholder="Telèfon" required>
                 </div>
-                <span class="error" v-show="validation?.errors.first('telefon')">
+                <span class="error" v-show="validation?.error('telefon')">
                     Introdueix el teu telèfon
                     <br>
                 </span>
@@ -100,7 +100,7 @@
                     <label for="image">Selecciona una imatge (formats .png i .jpeg) </label>
                     <input id="image" class="input-image" @change="imageSelected" type="file" accept="image/png, image/jpeg" required>
                 </div>
-                <span class="error" v-show="validation?.errors.first('imatge')">
+                <span class="error" v-show="validation?.error('imatge')">
                     Introdueix una imatge vàlida (png/jpeg)
                     <br>
                 </span>
@@ -122,7 +122,7 @@ Vitae nulla litora integer enim commodo imperdiet porttitor luctus dapibus accum
                     <div>Accepta les condicions</div>
                     <input class="input-checkbox" v-model="formData.condicions" type="checkbox" placeholder="" required>
                 </div>
-                <span class="error" v-show="validation?.errors.first('condicions')">
+                <span class="error" v-show="validation?.error('condicions')">
                     Has d'acceptar les condicions
                     <br>
                 </span>
@@ -137,30 +137,26 @@ Vitae nulla litora integer enim commodo imperdiet porttitor luctus dapibus accum
 </template>
 
 <script> 
-import Validator from 'validatorjs'
 
-Validator.register('imatge', function(value, requirements, attribute){
-    console.log(value)
-    return !(value != 'image/png' && value != 'image/jpeg');
-}, 'La :attribute no està amb format .png o .jpeg');
+import createValidator, { required,date,email,telefon,accepted } from './lib/validator.js';
 
 const rules = [
     {
-        nom: 'required',
-        cognoms: 'required',
+        nom: [required],
+        cognoms: [required],
     },
     {
-        data_naixement: 'required|date',
+        data_naixement: [required,date],
     },
     {
-        email: 'required|email',
-        telefon: ['required', 'regex:/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/'],
+        email: [required,email],
+        telefon: [required,telefon],
     },
     {
-        imatge: 'required|imatge'
+        imatge: [required]
     },
     {
-        condicions: 'required|accepted'
+        condicions: [required,accepted]
     }
 ];
 
@@ -182,12 +178,25 @@ export default {
         }
     },
     methods: {
+        /**
+        * Continues with the step only if validation is correct for each attribute.
+        */
         Continue_step() {
-            this.validation =  new Validator(this.formData, rules[this.step - 1]);
-            if (this.validation.fails()) return
+            this.validation = createValidator(rules[this.step - 1]);
+            if (!this.validation.passes(this.formData)) return
             this.step++;
             this.colors[this.step - 1] = "#76A972";
         },
+        /**
+        * Goes a step backwards, without clearing previous inputs.
+        */
+        Backwards_step() {
+            this.step--;
+            this.colors[this.step + 1] = "#d9d9d9";
+        },
+        /**
+        * Assigns the type of image given to the data attribute.
+        */
         imageSelected(e) {
             this.formData.imatge = e.target.files[0].type;
         }
