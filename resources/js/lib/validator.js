@@ -4,10 +4,6 @@
 * @return {boolean}
 */
 export function required(value, _attribute) {
-    // if (['nom', 'cognoms', 'email', 'telefon'].includes(attribute)) {
-    //     return !(value == undefined || value === null || value == '');
-    // }
-    // if (attribute == ) {}
     return (value != undefined && value != null && value != '');
 }
 
@@ -73,7 +69,7 @@ export function accepted(value, _attribute) {
 * Create a validation instance with usable methods.
 * This validation rule implies the attribute is "required".
 *
-* @return {boolean}
+* @return {object}
 */
 export default function createValidator(rules) {
     let errors = {};
@@ -89,10 +85,8 @@ export default function createValidator(rules) {
                 if (!funct(values[rule], rule)) {
                     errors[rule] = 'error';
                 }
-                console.log("heyy")
             }
         }
-        console.log(Object.keys(errors).length == 0)
         return Object.keys(errors).length == 0;
     }
 

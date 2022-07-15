@@ -4,35 +4,35 @@
         <div class="justify-center-flex">
             <div class="flex-container-circles">
                 <div class="circle-description">
-                    <div id="circle-1" v-bind:style="{backgroundColor: colors[0]}" class="circle">
+                    <div id="circle-1" :class="{active: isActive(1), notActive: !isActive(1)}" class="circle">
                         <div class="number">1</div>
                     </div>
                     <div class="description">Nom i Cognoms</div>
                 </div>
-                <div v-bind:style="{backgroundColor: colors[1]}" class="line"></div>
+                <div :class="{active: isActive(2), notActive: !isActive(2)}" class="line"></div>
                 <div class="circle-description">
-                    <div id="circle-2" v-bind:style="{backgroundColor: colors[1]}" class="circle">
+                    <div id="circle-2" :class="{active: isActive(2), notActive: !isActive(2)}" class="circle">
                         <div class="number">2</div>
                     </div>
                     <div class="description">Data Naixament</div>
                 </div>
-                <div v-bind:style="{backgroundColor: colors[2]}" class="line"></div>
+                <div :class="{active: isActive(3), notActive: !isActive(3)}" class="line"></div>
                 <div class="circle-description">
-                    <div id="circle-3" v-bind:style="{backgroundColor: colors[2]}" class="circle">
+                    <div id="circle-3" :class="{active: isActive(3), notActive: !isActive(3)}" class="circle">
                         <div class="number">3</div>
                     </div>
                     <div class="description">Email i Telèfon</div>
                 </div>
-                <div v-bind:style="{backgroundColor: colors[3]}" class="line"></div>
+                <div :class="{active: isActive(4), notActive: !isActive(4)}" class="line"></div>
                 <div class="circle-description">
-                    <div id="circle-4" v-bind:style="{backgroundColor: colors[3]}" class="circle">
+                    <div id="circle-4" :class="{active: isActive(4), notActive: !isActive(4)}" class="circle">
                         <div class="number">4</div>
                     </div>
                     <div class="description">Imatge</div>
                 </div>
-                <div v-bind:style="{backgroundColor: colors[4]}" class="line"></div>
+                <div :class="{active: isActive(5), notActive: !isActive(5)}" class="line"></div>
                 <div class="circle-description">
-                    <div id="circle-5" v-bind:style="{backgroundColor: colors[4]}" class="circle">
+                    <div id="circle-5" :class="{active: isActive(5), notActive: !isActive(5)}" class="circle">
                         <div class="number">5</div>
                     </div>
                     <div class="description">Condicions</div>
@@ -54,6 +54,7 @@
                     Introdueix els teus cognoms
                     <br>
                 </span>
+                <button class="button" @click.prevent="Backwards_step">Enrere</button>
                 <button class="button" @click.prevent="Continue_step">Continua</button>
             </form>
         </div>
@@ -68,6 +69,7 @@
                     Introdueix la data de naixement
                     <br>
                 </span>
+                <button class="button" @click.prevent="Backwards_step">Enrere</button>
                 <button class="button" @click.prevent="Continue_step">Continua</button>
             </form>
         </div>
@@ -89,6 +91,7 @@
                     Introdueix el teu telèfon
                     <br>
                 </span>
+                <button class="button" @click.prevent="Backwards_step">Enrere</button>
                 <button class="button" @click.prevent="Continue_step">Continua</button>
             </form>
         </div>
@@ -104,6 +107,7 @@
                     Introdueix una imatge vàlida (png/jpeg)
                     <br>
                 </span>
+                <button class="button" @click.prevent="Backwards_step">Enrere</button>
                 <button class="button" @click.prevent="Continue_step">Continua</button>
             </form>
         </div>
@@ -126,6 +130,7 @@ Vitae nulla litora integer enim commodo imperdiet porttitor luctus dapibus accum
                     Has d'acceptar les condicions
                     <br>
                 </span>
+                <button class="button" @click.prevent="Backwards_step">Enrere</button>
                 <button class="button" @click.prevent="Continue_step">Continua</button>
             </form>
         </div>
@@ -199,6 +204,10 @@ export default {
         */
         imageSelected(e) {
             this.formData.imatge = e.target.files[0].type;
+        },
+        isActive(step) {
+            console.log('step: ' + step + ', this.step: ' + this.step + '::' + (step <= this.step))
+            return step <= this.step;
         }
     }
 }
