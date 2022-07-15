@@ -3,35 +3,35 @@
         <div class="title">Test Stepper amb Vue</div>
         <div class="justify-center-flex">
             <div class="flex-container-circles">
-                <div class="circle-description">
+                <div class="circle-description" @click="checkStep(1)">
                     <div id="circle-1" :class="{active: isActive(1), notActive: !isActive(1)}" class="circle">
                         <div class="number">1</div>
                     </div>
                     <div class="description">Nom i Cognoms</div>
                 </div>
                 <div :class="{active: isActive(2), notActive: !isActive(2)}" class="line"></div>
-                <div class="circle-description">
+                <div class="circle-description" @click="checkStep(2)">
                     <div id="circle-2" :class="{active: isActive(2), notActive: !isActive(2)}" class="circle">
                         <div class="number">2</div>
                     </div>
                     <div class="description">Data Naixament</div>
                 </div>
                 <div :class="{active: isActive(3), notActive: !isActive(3)}" class="line"></div>
-                <div class="circle-description">
+                <div class="circle-description" @click="checkStep(3)">
                     <div id="circle-3" :class="{active: isActive(3), notActive: !isActive(3)}" class="circle">
                         <div class="number">3</div>
                     </div>
                     <div class="description">Email i Telèfon</div>
                 </div>
                 <div :class="{active: isActive(4), notActive: !isActive(4)}" class="line"></div>
-                <div class="circle-description">
+                <div class="circle-description" @click="checkStep(4)">
                     <div id="circle-4" :class="{active: isActive(4), notActive: !isActive(4)}" class="circle">
                         <div class="number">4</div>
                     </div>
                     <div class="description">Imatge</div>
                 </div>
                 <div :class="{active: isActive(5), notActive: !isActive(5)}" class="line"></div>
-                <div class="circle-description">
+                <div class="circle-description" @click="checkStep(5)">
                     <div id="circle-5" :class="{active: isActive(5), notActive: !isActive(5)}" class="circle">
                         <div class="number">5</div>
                     </div>
@@ -205,9 +205,26 @@ export default {
         imageSelected(e) {
             this.formData.imatge = e.target.files[0].type;
         },
+        /**
+        * Checks if step is active or not.
+        * 
+        * @returns {boolean}
+        */
         isActive(step) {
-            console.log('step: ' + step + ', this.step: ' + this.step + '::' + (step <= this.step))
             return step <= this.step;
+        },
+        /**
+        * Checks if user trying to go foward or backwards in steps.
+        */
+        checkStep(step) {
+            if (step < this.step) {
+                this.step = step;
+            }
+            if (step > this.step) {
+                if ((step - this.step) == 1) {
+                    this.Continue_step()
+                }
+            }
         }
     }
 }
