@@ -17463,16 +17463,21 @@ var rules = [{
     Continue_step: function Continue_step() {
       this.validation = (0,_lib_validator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(rules[this.step - 1]);
       if (!this.validation.passes(this.formData)) return;
+      this.$refs[this.step].classList.remove("hidden-responsive");
       this.step++;
       this.colors[this.step - 1] = "#76A972";
+      this.$refs[this.step].classList.add("hidden-responsive");
     },
 
     /**
     * Goes a step backwards, without clearing previous inputs.
     */
     Backwards_step: function Backwards_step() {
+      if (this.step == 1) return;
+      this.$refs[this.step].classList.remove("hidden-responsive");
       this.step--;
       this.colors[this.step + 1] = "#d9d9d9";
+      this.$refs[this.step].classList.add("hidden-responsive");
     },
 
     /**
@@ -17496,7 +17501,9 @@ var rules = [{
     */
     checkStep: function checkStep(step) {
       if (step < this.step) {
+        this.$refs[this.step].classList.remove("hidden-responsive");
         this.step = step;
+        this.$refs[this.step].classList.add("hidden-responsive");
       }
 
       if (step > this.step) {
@@ -17505,6 +17512,9 @@ var rules = [{
         }
       }
     }
+  },
+  mounted: function mounted() {
+    this.$refs[this.step].classList.add("hidden-responsive");
   }
 });
 
@@ -17836,7 +17846,6 @@ var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_78 = [_hoisted_76, _hoisted_77];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _$data$validation, _$data$validation2, _$data$validation3, _$data$validation4, _$data$validation5, _$data$validation6, _$data$validation7;
 
@@ -17844,7 +17853,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "circle-description",
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.checkStep(1);
-    })
+    }),
+    ref: "1"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     id: "circle-1",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
@@ -17853,7 +17863,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, "circle"])
   }, _hoisted_6, 2
   /* CLASS */
-  ), _hoisted_7]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  ), _hoisted_7], 512
+  /* NEED_PATCH */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
       active: $options.isActive(2),
       notActive: !$options.isActive(2)
@@ -17864,7 +17876,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "circle-description",
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return $options.checkStep(2);
-    })
+    }),
+    ref: "2"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     id: "circle-2",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
@@ -17873,7 +17886,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, "circle"])
   }, _hoisted_9, 2
   /* CLASS */
-  ), _hoisted_10]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  ), _hoisted_10], 512
+  /* NEED_PATCH */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
       active: $options.isActive(3),
       notActive: !$options.isActive(3)
@@ -17884,7 +17899,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "circle-description",
     onClick: _cache[2] || (_cache[2] = function ($event) {
       return $options.checkStep(3);
-    })
+    }),
+    ref: "3"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     id: "circle-3",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
@@ -17893,7 +17909,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, "circle"])
   }, _hoisted_12, 2
   /* CLASS */
-  ), _hoisted_13]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  ), _hoisted_13], 512
+  /* NEED_PATCH */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
       active: $options.isActive(4),
       notActive: !$options.isActive(4)
@@ -17904,7 +17922,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "circle-description",
     onClick: _cache[3] || (_cache[3] = function ($event) {
       return $options.checkStep(4);
-    })
+    }),
+    ref: "4"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     id: "circle-4",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
@@ -17913,7 +17932,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, "circle"])
   }, _hoisted_15, 2
   /* CLASS */
-  ), _hoisted_16]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  ), _hoisted_16], 512
+  /* NEED_PATCH */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
       active: $options.isActive(5),
       notActive: !$options.isActive(5)
@@ -17924,7 +17945,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "circle-description",
     onClick: _cache[4] || (_cache[4] = function ($event) {
       return $options.checkStep(5);
-    })
+    }),
+    ref: "5"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     id: "circle-5",
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
@@ -17933,7 +17955,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, "circle"])
   }, _hoisted_18, 2
   /* CLASS */
-  ), _hoisted_19])])]), this.step == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_21, [_hoisted_22, _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), _hoisted_19], 512
+  /* NEED_PATCH */
+  )])]), this.step == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_21, [_hoisted_22, _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "input",
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
       return $data.formData.nom = $event;
@@ -18070,7 +18094,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[21] || (_cache[21] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.Continue_step && $options.Continue_step.apply($options, arguments);
     }, ["prevent"]))
-  }, "Continua")])])) : this.step == 6 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_75, _hoisted_78)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
+  }, "Continua")])])) : this.step == 6 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_75, [_hoisted_76, _hoisted_77, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "button",
+    onClick: _cache[22] || (_cache[22] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.Backwards_step && $options.Backwards_step.apply($options, arguments);
+    }, ["prevent"]))
+  }, "Enrere")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
 }
 
 /***/ }),

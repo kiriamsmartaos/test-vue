@@ -70,8 +70,7 @@ body {
   margin-top: 22.5px;
 }
 .container .content {
-  padding: 30px 100px 30px 100px;
-  width: 100%;
+  padding: 30px;
   height: 400px;
   background-color: white;
   margin-top: 70px;
@@ -144,4 +143,23 @@ body {
 .container .content .button:hover {
   opacity: 80%;
   cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .container .justify-center-flex .flex-container-circles {
+    justify-content: center;
+  }
+  .container .justify-center-flex .flex-container-circles .circle-description {
+    display: none;
+  }
+  .container .justify-center-flex .flex-container-circles .circle-description .circle {
+    width: 80px;
+    height: 80px;
+  }
+  .container .justify-center-flex .flex-container-circles .line {
+    display: none;
+  }
+  .container .justify-center-flex .flex-container-circles .hidden-responsive {
+    display: block;
+  }
 }
