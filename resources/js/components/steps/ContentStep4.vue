@@ -1,16 +1,15 @@
 <template>
-    <form action="">
+    <form action="" enctype="multipart/form-data">
         <div class="title-content">{{ title }}</div>
         <div class="line-content"></div>
         <div class="box">
-            <input :type="type"
-            class="input"
-            v-model="input"
-            @input="typed()"
-            required/>
+            <StepInputImage
+            type="file"
+            @imageSelected="emit_imageSelected">
+            </StepInputImage>
         </div>
         <span class="error" v-show="error">
-          Introdueix la data de naixement
+          Introdueix una imatge vàlida (png/jpeg)
           <br />
         </span>
         <button class="button" @click.prevent="emit_Backwards_step">Enrere</button>
@@ -19,17 +18,16 @@
 </template>
 
 <script>
+import StepInputImage from '../inputs/StepInputImage.vue'
+
 export default {
+    components: {
+        StepInputImage
+    },
     props: {
         title: String,
-        type: String,
         error: Boolean,
         value: String,
-    },
-    data() {
-        return {
-            input: this.value,
-        }
     },
     methods: {
         emit_Backwards_step() {
@@ -38,8 +36,8 @@ export default {
         emit_Continue_step() {
             this.$emit('continue_step')
         },
-        typed() {
-            this.$emit('updateDate', this.input)
+        emit_imageSelected(e) {
+            this.$emit('imageSelected', e)
         }
     }
 }

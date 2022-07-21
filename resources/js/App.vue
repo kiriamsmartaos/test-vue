@@ -17,9 +17,7 @@
     <Content>
       <ContentStep1
         v-if="step == 1"
-        type="text"
         title="Nom i Cognoms"
-        :placeholder="placeholders['step1']"
         :error1="validation?.error('nom')"
         :error2="validation?.error('cognoms')"
         :value1="formData.nom"
@@ -31,7 +29,6 @@
       </ContentStep1>
       <ContentStep2
         v-if="step == 2"
-        type="date"
         title="Data Naixement"
         :error="validation?.error('data_naixement')"
         :value="formData.data_naixement"
@@ -41,9 +38,7 @@
       </ContentStep2>
       <ContentStep3
         v-if="step == 3"
-        type="text"
         title="Email i Telèfon"
-        :placeholder="placeholders['step3']"
         :error1="validation?.error('email')"
         :error2="validation?.error('telefon')"
         :value1="formData.email"
@@ -55,7 +50,6 @@
       </ContentStep3>
       <ContentStep4
         v-if="step == 4"
-        type="file"
         title="Imatge"
         :error="validation?.error('imatge')"
         :value="formData.imatge"
@@ -85,12 +79,12 @@
 <script>
 import Step from "./components/Step.vue"
 import Content from "./components/Content.vue"
-import ContentStep1 from "./components/ContentStep1.vue"
-import ContentStep2 from "./components/ContentStep2.vue"
-import ContentStep3 from "./components/ContentStep3.vue"
-import ContentStep4 from "./components/ContentStep4.vue"
-import ContentStep5 from "./components/ContentStep5.vue"
-import ContentStep6 from "./components/ContentStep6.vue"
+import ContentStep1 from "./components/steps/ContentStep1.vue"
+import ContentStep2 from "./components/steps/ContentStep2.vue"
+import ContentStep3 from "./components/steps/ContentStep3.vue"
+import ContentStep4 from "./components/steps/ContentStep4.vue"
+import ContentStep5 from "./components/steps/ContentStep5.vue"
+import ContentStep6 from "./components/steps/ContentStep6.vue"
 import createValidator, {
   required,
   date,

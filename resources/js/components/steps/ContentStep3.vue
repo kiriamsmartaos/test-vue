@@ -3,26 +3,29 @@
         <div class="title-content">{{ title }}</div>
         <div class="line-content"></div>
         <div class="box">
-            <input :type="type"
-            class="input"
-            :placeholder="placeholder[0]"
-            v-model="inputs[0]"
-            @input="typed(0)"
-            required/>
+            <StepInput
+                type="text"
+                placeholder="Escriu el teu email"
+                :value="value1"
+                :isCheckbox="false"
+                @updateValue="emit_updateEmail">
+            </StepInput>
         </div>
         <span class="error" v-show="error1">
-          Introdueix el teu nom
+            Introdueix el teu email
+            <br />
         </span>
         <div class="box">
-            <input :type="type"
-            class="input"
-            :placeholder="placeholder[1]"
-            v-model="inputs[1]"
-            @input="typed(1)"
-            required/>
+            <StepInput
+                type="text"
+                placeholder="Escriu el teu telèfon"
+                :value="value2"
+                :isCheckbox="false"
+                @updateValue="emit_updateTelefon">
+            </StepInput>
         </div>
         <span class="error" v-show="error2">
-          Introdueix els teus cognoms
+          Introdueix el teu telèfon
           <br />
         </span>
         <button class="button" @click.prevent="emit_Backwards_step">Enrere</button>
@@ -31,11 +34,14 @@
 </template>
 
 <script>
+import StepInput from "../inputs/StepInput.vue"
+
 export default {
+    components: {
+        StepInput,
+    },
     props: {
         title: String,
-        type: String,
-        placeholder: Array,
         error1: Boolean,
         error2: Boolean,
         value1: String,
@@ -43,7 +49,7 @@ export default {
     },
     data() {
         return {
-            inputs: [this.value1, this.value2],
+            inputs: [this.value1,this.value2],
         }
     },
     methods: {
@@ -53,12 +59,11 @@ export default {
         emit_Continue_step() {
             this.$emit('continue_step')
         },
-        typed(index) {
-            if (index == 0) {
-                this.$emit('updateNom', this.inputs[index])
-                return
-            }
-            this.$emit('updateCognoms', this.inputs[index])
+        emit_updateEmail(value) {
+            this.$emit('updateEmail', value)
+        },
+        emit_updateTelefon(value) {
+            this.$emit('updateTelefon', value)
         }
     }
 }

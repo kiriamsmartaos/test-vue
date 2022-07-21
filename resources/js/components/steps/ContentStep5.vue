@@ -43,15 +43,15 @@
         </div>
         <div class="box-checkbox">
             <div>Accepta les condicions</div>
-            <input :type="type"
-            class="input-checkbox"
-            v-model="input"
-            @change="typed()"
-            required/>
+            <StepInputCheckbox
+                type="checkbox"
+                :value="value"
+                @updateValue="emit_updateCondicions">
+            </StepInputCheckbox>
         </div>
         <span class="error" v-show="error">
-          Has d'acceptar les condicions
-          <br />
+            Has d'acceptar les condicions
+            <br />
         </span>
         <button class="button" @click.prevent="emit_Backwards_step">Enrere</button>
         <button class="button" @click.prevent="emit_Continue_step">Continua</button>
@@ -59,9 +59,13 @@
 </template>
 
 <script>
-import { valueToNode } from '@babel/types'
+import StepInputCheckbox from '../inputs/StepInput.vue'
 
 export default {
+    emits: ['emit_updateCondicions', 'emit_Backwards_step', 'emit_Continue_step'],
+    components: {
+        StepInputCheckbox,
+    },
     props: {
         title: String,
         type: String,
@@ -80,9 +84,9 @@ export default {
         emit_Continue_step() {
             this.$emit('continue_step')
         },
-        typed() {
-            this.$emit('updateCondicions', this.input)
-        }
+        emit_updateCondicions(value) {
+            this.$emit('updateCondicions', value)
+        },
     }
 }
 </script>
