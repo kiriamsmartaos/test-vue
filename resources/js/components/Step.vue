@@ -1,14 +1,13 @@
 <template>
     <div class="circle-description" @click="checkStep(number)" :class="{ hidden_responsive: isCurrent(number) }">
-          <div
-            id="circle-1"
-            :class="{ active: isActive(number), notActive: !isActive(number) }"
-            class="circle"
-          >
-            <div class="number">{{ number }}</div>
-          </div>
-          <div class="description">{{ description}}</div>
+        <div
+        id="circle-1"
+        :class="{ active: isActive(number), notActive: !isActive(number) }"
+        class="circle">
+        <div class="number">{{ number }}</div>
         </div>
+        <div class="description">{{ description}}</div>
+    </div>
 </template>
 
 <script>

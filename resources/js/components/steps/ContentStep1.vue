@@ -28,13 +28,11 @@
             Introdueix els teus cognoms
             <br />
         </span>
-        <button class="button" @click.prevent="emit_Backwards_step">Enrere</button>
         <button class="button" @click.prevent="emit_Continue_step">Continua</button>
     </form>
 </template>
 
 <script>
-import { emit } from "process"
 import StepInput from "../inputs/StepInput.vue"
 
 export default {
@@ -55,15 +53,26 @@ export default {
         }
     },
     methods: {
-        emit_Backwards_step() {
-            this.$emit('backwards_step')
-        },
+        /**
+         * Emits continue step to parent.
+         * 
+         */
         emit_Continue_step() {
             this.$emit('continue_step')
         },
+        /**
+         * Emits updateNom to parent.
+         * 
+         * @param {string} value
+         */
         emit_updateNom(value) {
             this.$emit('updateNom', value)
         },
+        /**
+         * Emits updateCognoms to parent.
+         * 
+         * @param {string} value
+         */
         emit_updateCognoms(value) {
             this.$emit('updateCognoms', value)
         }

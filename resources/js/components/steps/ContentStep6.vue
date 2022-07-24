@@ -10,6 +10,10 @@ export default {
         title: String,
     },
     methods: {
+        /**
+         * Emits backwards step to parent.
+         * 
+         */
         emit_Backwards_step() {
             this.$emit('backwards_step')
         }

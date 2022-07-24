@@ -3,15 +3,16 @@
     <div class="title">Test Stepper amb Vue</div>
     <div class="justify-center-flex">
       <div class="flex-container-circles">
-        <Step v-for="description,index in descriptions"
-          :key="index" 
+        <template v-for="description,index in descriptions" :key="index">
+          <Step
           :number="index+1" 
           :description="description" 
           :step="step" 
           @continue_step="Continue_step" 
-          @backwards_step="Change_step"
-          >
-        </Step>
+          @backwards_step="Change_step">
+          </Step>
+          <div class="line" :class="{active: isActive(index+1), notActive: !isActive(index+1)}" v-if="index+1 < 5"></div>
+        </template>
       </div>
     </div>
     <Content>
@@ -23,7 +24,6 @@
         :value1="formData.nom"
         :value2="formData.cognoms"
         @Continue_step="Continue_step"
-        @Backwards_step="Backwards_step"
         @updateNom="updateNom"
         @updateCognoms="updateCognoms">
       </ContentStep1>
@@ -164,15 +164,25 @@ export default {
     /**
      * Changes step if clicked from circles and going backwards.
      * 
-     * @param {*} step 
+     * @param {integer} step 
      */
     Change_step(step) {
       this.step = step;
     },
     /**
+     * Checks if step is active or not.
+     *
+     * @param {integer} step
+     * 
+     * @returns {boolean}
+     */
+    isActive(step) {
+        return step < this.step;
+    },
+    /**
      * Assigns the name given to the data attribute.
      * 
-     * @param {*} e
+     * @param {string} value
      */
     updateNom(value) {
       this.formData.nom = value
@@ -180,7 +190,7 @@ export default {
     /**
      * Assigns the surname given to the data attribute.
      * 
-     * @param {*} value
+     * @param {string} value
      */
     updateCognoms(value) {
       this.formData.cognoms = value
@@ -188,7 +198,7 @@ export default {
     /**
      * Assigns the date given to the data attribute.
      * 
-     * @param {*} value
+     * @param {string} value
      */
     updateDate(value) {
       this.formData.data_naixement = value
@@ -196,7 +206,7 @@ export default {
     /**
      * Assigns the email given to the data attribute.
      * 
-     * @param {*} value
+     * @param {string} value
      */
     updateEmail(value) {
       this.formData.email = value
@@ -204,7 +214,7 @@ export default {
     /**
      * Assigns the telephone given to the data attribute.
      * 
-     * @param {*} value
+     * @param {string} value
      */
     updateTelefon(value) {
       this.formData.telefon = value
@@ -220,7 +230,7 @@ export default {
     /**
      * Assigns the conditions given to the data attribute.
      * 
-     * @param {*} value
+     * @param {string} value
      */
     updateCondicions(value) {
       this.formData.condicions = value

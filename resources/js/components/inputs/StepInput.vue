@@ -21,6 +21,10 @@ export default {
         }
     },
     methods: {
+        /**
+         * Emits updateValue to parent.
+         * 
+         */
         typed() {
             this.$emit('updateValue', this.input)
         },

@@ -37,12 +37,25 @@ export default {
         }
     },
     methods: {
+        /**
+         * Emits backwards step to parent.
+         * 
+         */
         emit_Backwards_step() {
             this.$emit('backwards_step')
         },
+        /**
+         * Emits continue step to parent.
+         * 
+         */
         emit_Continue_step() {
             this.$emit('continue_step')
         },
+        /**
+         * Emits updateDate to parent.
+         * 
+         * @param {string} value
+         */
         emit_updateDate(value) {
             this.$emit('updateDate', value)
         }

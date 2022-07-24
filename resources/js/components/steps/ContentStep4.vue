@@ -30,12 +30,25 @@ export default {
         value: String,
     },
     methods: {
+        /**
+         * Emits backwards step to parent.
+         * 
+         */
         emit_Backwards_step() {
             this.$emit('backwards_step')
         },
+        /**
+         * Emits continue step to parent.
+         * 
+         */
         emit_Continue_step() {
             this.$emit('continue_step')
         },
+        /**
+         * Emits imageSelected to parent.
+         * 
+         * @param {*} e
+         */
         emit_imageSelected(e) {
             this.$emit('imageSelected', e)
         }

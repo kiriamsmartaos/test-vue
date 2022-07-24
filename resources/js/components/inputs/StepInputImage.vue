@@ -14,6 +14,11 @@ export default {
         value: String,
     },
     methods: {
+        /**
+         * Emits imageSelected to parent.
+         * 
+         * @param {*} e
+         */
         emit_imageSelected(e) {
             this.$emit('imageSelected', e)
         },

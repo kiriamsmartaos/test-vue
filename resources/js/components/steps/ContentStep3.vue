@@ -53,15 +53,33 @@ export default {
         }
     },
     methods: {
+        /**
+         * Emits backwards step to parent.
+         * 
+         */
         emit_Backwards_step() {
             this.$emit('backwards_step')
         },
+        /**
+         * Emits continue step to parent.
+         * 
+         */
         emit_Continue_step() {
             this.$emit('continue_step')
         },
+        /**
+         * Emits updateEmail to parent.
+         * 
+         * @param {string} value
+         */
         emit_updateEmail(value) {
             this.$emit('updateEmail', value)
         },
+        /**
+         * Emits updateTelefon to parent.
+         * 
+         * @param {string} value
+         */
         emit_updateTelefon(value) {
             this.$emit('updateTelefon', value)
         }
