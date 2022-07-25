@@ -17531,6 +17531,8 @@ var rules = [{
      */
     updateNom: function updateNom(value) {
       this.formData.nom = value;
+      this.validation = (0,_lib_validator_js__WEBPACK_IMPORTED_MODULE_8__["default"])(rules[this.step - 1]);
+      this.validation.passes(this.formData);
     },
 
     /**
@@ -17540,6 +17542,8 @@ var rules = [{
      */
     updateCognoms: function updateCognoms(value) {
       this.formData.cognoms = value;
+      this.validation = (0,_lib_validator_js__WEBPACK_IMPORTED_MODULE_8__["default"])(rules[this.step - 1]);
+      this.validation.passes(this.formData);
     },
 
     /**
@@ -17549,6 +17553,8 @@ var rules = [{
      */
     updateDate: function updateDate(value) {
       this.formData.data_naixement = value;
+      this.validation = (0,_lib_validator_js__WEBPACK_IMPORTED_MODULE_8__["default"])(rules[this.step - 1]);
+      this.validation.passes(this.formData);
     },
 
     /**
@@ -17558,6 +17564,8 @@ var rules = [{
      */
     updateEmail: function updateEmail(value) {
       this.formData.email = value;
+      this.validation = (0,_lib_validator_js__WEBPACK_IMPORTED_MODULE_8__["default"])(rules[this.step - 1]);
+      this.validation.passes(this.formData);
     },
 
     /**
@@ -17567,6 +17575,8 @@ var rules = [{
      */
     updateTelefon: function updateTelefon(value) {
       this.formData.telefon = value;
+      this.validation = (0,_lib_validator_js__WEBPACK_IMPORTED_MODULE_8__["default"])(rules[this.step - 1]);
+      this.validation.passes(this.formData);
     },
 
     /**
@@ -17576,6 +17586,8 @@ var rules = [{
      */
     updateImage: function updateImage(e) {
       this.formData.imatge = e.target.files[0].type;
+      this.validation = (0,_lib_validator_js__WEBPACK_IMPORTED_MODULE_8__["default"])(rules[this.step - 1]);
+      this.validation.passes(this.formData);
     },
 
     /**
@@ -17585,6 +17597,8 @@ var rules = [{
      */
     updateCondicions: function updateCondicions(value) {
       this.formData.condicions = value;
+      this.validation = (0,_lib_validator_js__WEBPACK_IMPORTED_MODULE_8__["default"])(rules[this.step - 1]);
+      this.validation.passes(this.formData);
     }
   }
 });

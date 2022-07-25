@@ -186,8 +186,6 @@ export default {
      */
     updateNom(value) {
       this.formData.nom = value
-      this.validation = createValidator(rules[this.step - 1]);
-      this.validation.passes(this.formData)
     },
     /**
      * Assigns the surname given to the data attribute.
@@ -196,8 +194,6 @@ export default {
      */
     updateCognoms(value) {
       this.formData.cognoms = value
-      this.validation = createValidator(rules[this.step - 1]);
-      this.validation.passes(this.formData)
     },
     /**
      * Assigns the date given to the data attribute.
@@ -206,8 +202,6 @@ export default {
      */
     updateDate(value) {
       this.formData.data_naixement = value
-      this.validation = createValidator(rules[this.step - 1]);
-      this.validation.passes(this.formData)
     },
     /**
      * Assigns the email given to the data attribute.
@@ -216,8 +210,6 @@ export default {
      */
     updateEmail(value) {
       this.formData.email = value
-      this.validation = createValidator(rules[this.step - 1]);
-      this.validation.passes(this.formData)
     },
     /**
      * Assigns the telephone given to the data attribute.
@@ -226,8 +218,6 @@ export default {
      */
     updateTelefon(value) {
       this.formData.telefon = value
-      this.validation = createValidator(rules[this.step - 1]);
-      this.validation.passes(this.formData)
     },
     /**
      * Assigns the type of image given to the data attribute.
@@ -236,8 +226,6 @@ export default {
      */
     updateImage(e) {
       this.formData.imatge = e.target.files[0].type;
-      this.validation = createValidator(rules[this.step - 1]);
-      this.validation.passes(this.formData)
     },
     /**
      * Assigns the conditions given to the data attribute.
@@ -246,8 +234,6 @@ export default {
      */
     updateCondicions(value) {
       this.formData.condicions = value
-      this.validation = createValidator(rules[this.step - 1]);
-      this.validation.passes(this.formData)
     }
   },
 };
