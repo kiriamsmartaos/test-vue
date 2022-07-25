@@ -3,16 +3,13 @@
     <div class="title">Test Stepper amb Vue</div>
     <div class="justify-center-flex">
       <div class="flex-container-circles">
-        <template v-for="description,index in descriptions" :key="index">
-          <Step
-          :number="index+1" 
-          :description="description" 
-          :step="step" 
-          @continue_step="Continue_step" 
-          @backwards_step="Change_step">
-          </Step>
-          <div class="line" :class="{active: isActive(index+1), notActive: !isActive(index+1)}" v-if="index+1 < 5"></div>
-        </template>
+        <Step v-for="description,index in descriptions" :key="index"
+        :number="index+1" 
+        :description="description" 
+        :step="step" 
+        @continue_step="Continue_step" 
+        @backwards_step="Change_step">
+        </Step>
       </div>
     </div>
     <Content>
